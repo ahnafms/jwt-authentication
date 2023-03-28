@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Head from "next/head";
+import Image from "next/image";
+import styles from "@/styles/Home.module.css";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
+import {useRouter} from "next/router";
 
 export default function Home() {
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -14,31 +14,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
+      <main className="flex flex-col h-screen justify-center">
         <div className={styles.center}>
           <Image
             className={styles.logo}
@@ -49,75 +25,26 @@ export default function Home() {
             priority
           />
           <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+            <p className="text-lg font-bold text-center text-bold p-10">
+              JWT Authentication
+            </p>
           </div>
         </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+        <div className="absolute bottom-0 gap-x-16 left-1/2 items-center flex justify-center">
+          <button onClick={()=> router.push('/register')} className="group hover:opacity-100 duration-150 opacity-20 rounded-lg flex gap-x-4 relative -left-1/2 w-48 text-center items-center text-lg bottom-10 px-4 py-2 outline-gray-600 text-white">
+            <div className="flex m-auto justify-center items-center gap-x-4">
+              <p>register</p>
+              <ArrowRightCircleIcon className="h-5 w-5 group-hover:translate-x-2 group-hover:text-slate-100 duration-200 text-white" />
+            </div>
+          </button>
+          <button onClick={()=> router.push('/login')} className="rounded-lg group flex gap-x-4 duration-150 hover:opacity-100 w-48 opacity-20 items-center relative -left-1/2 text-lg bottom-10 px-4 py-2 outline-gray-600 text-white">
+            <div className="flex m-auto justify-center items-center gap-x-4">
+              <p>login</p>
+              <ArrowRightCircleIcon className="h-5 w-5 group-hover:translate-x-2 group-hover:text-slate-100 duration-200 text-white" />
+            </div>
+          </button>
         </div>
       </main>
     </>
-  )
+  );
 }
