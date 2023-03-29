@@ -1,9 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export default function Register() {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const res = await axios.post("/api/user", data, {
+      headers:{
+        'Access-Control-Allow-Origin' : '*'
+      }
+    }).catch((err)=> console.log(err))
+    console.log(res);
     console.log(data);
   };
   return (
@@ -14,9 +21,9 @@ export default function Register() {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-y-3"
         >
-          <label htmlFor="nama">Nama</label>
+          <label htmlFor="name">Name</label>
           <input
-            {...register("nama")}
+            {...register("name")}
             type="text"
             id="nama"
             className="px-4 py-2 rounded-sm"
@@ -24,7 +31,7 @@ export default function Register() {
           <label htmlFor="password">Password</label>
           <input
             {...register("password")}
-            type="text"
+            type="password"
             id="password"
             className="px-4 py-2 rounded-sm"
           />
