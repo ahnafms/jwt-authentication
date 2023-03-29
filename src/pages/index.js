@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter()
@@ -25,8 +25,8 @@ export default function Home() {
             priority
           />
           <div className={styles.thirteen}>
-            <p className="text-lg font-bold text-center text-bold p-10">
-              JWT Authentication
+            <p className="text-2xl text-slate-200 font-bold text-center text-bold ">
+              JWT AUTH
             </p>
           </div>
         </div>

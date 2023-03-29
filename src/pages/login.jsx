@@ -1,10 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import Router from "next/router";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    await axios.post("/api/auth/login", data, {
+      headers:{
+        'Access-Control-Allow-Origin' : '*'
+      }
+    }).then(res => {
+      console.log(res)
+      Cookies.set("jwt", res.data.token )
+      Router.push('/dashboard')
+    }).catch((err)=> console.log(err))
   };
   return (
     <main className="h-screen w-full flex-col flex justify-center items-center">
@@ -14,17 +25,17 @@ export default function Login() {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-y-5"
         >
-          <label htmlFor="nama">Nama</label>
+          <label htmlFor="email">Email</label>
           <input
-            {...register("nama")}
-            type="text"
-            id="nama"
+            {...register("email")}
+            type="email"
+            id="email"
             className="px-4 py-2 rounded-sm"
           />
           <label htmlFor="password">Password</label>
           <input
             {...register("password")}
-            type="text"
+            type="password"
             id="password"
             className="px-4 py-2 rounded-sm"
           />

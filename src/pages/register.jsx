@@ -5,13 +5,12 @@ import axios from "axios";
 export default function Register() {
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    const res = await axios.post("/api/user", data, {
+    const res = await axios.post("/api/auth/register", data, {
       headers:{
         'Access-Control-Allow-Origin' : '*'
       }
     }).catch((err)=> console.log(err))
     console.log(res);
-    console.log(data);
   };
   return (
     <main className="h-screen w-full flex-col flex justify-center items-center">
