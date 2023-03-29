@@ -5,7 +5,38 @@
 body{
   font-family: "Poppins", sans-serif;
 }
-:root {
+.border-glow {
+  border: 1px solid white;
+  animation: 5s infinite glow;
+}
+@keyframes glow {
+  0% {
+    border-color: white;
+  }
+  25% {
+    border-color: slategray;
+  }
+  75% {
+    border-color: white;
+  }
+  100% {
+    border-color: grey;
+  }
+}
+@-webkit-keyframes glow {
+  0% {
+    border-color: white;
+  }
+  25% {
+    border-color: slategray;
+  }
+  75% {
+    border-color: gray;
+  }
+  100% {
+    border-color: grey;
+  }
+}:root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
